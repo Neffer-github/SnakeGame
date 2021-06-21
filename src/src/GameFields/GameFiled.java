@@ -1,11 +1,10 @@
 package GameFields;
 
+import MainWindow.Main;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
 import java.util.Random;
 
 public class GameFiled extends JPanel implements ActionListener {
@@ -112,7 +111,6 @@ public class GameFiled extends JPanel implements ActionListener {
     }
 
 
-
     @Override
     public void actionPerformed(ActionEvent e) { // this method calls every 250 milsec
         if (inGame) {
@@ -129,17 +127,18 @@ public class GameFiled extends JPanel implements ActionListener {
         super.paintComponent(g);
         if (inGame) {
             String TempForScore = String.valueOf(Score);
-            g.drawString(TempForScore,Size/2,Size/2);
+            g.drawString(TempForScore, Size / 2, Size / 2);
             g.drawImage(apple, appleX, appleY, this);
             for (int i = 0; i < dots; i++) {
                 g.drawImage(dot, x[i], y[i], this);
             }
         } else {
-            String str = "Game Over";
+            String overGame = "Game Over", forRestart = "Press Esc For restart";
             Font f = new Font("Arial", Font.BOLD, 14);
             g.setColor(Color.red);
             g.setFont(f);
-            g.drawString(str, 120, Size / 2);
+            g.drawString(overGame, 120, Size / 2);
+            g.drawString(forRestart, 88, (Size / 2) + 20);
         }
     }
 
@@ -169,6 +168,10 @@ public class GameFiled extends JPanel implements ActionListener {
                 right = false;
                 down = true;
                 left = false;
+            }
+
+            if (key == KeyEvent.VK_ESCAPE) {
+                Main StartGame = new Main();
             }
         }
     }
