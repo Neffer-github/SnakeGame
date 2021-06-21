@@ -26,6 +26,7 @@ public class GameFiled extends JPanel implements ActionListener {
     private boolean up;
     private boolean down;
     private boolean inGame = true;
+    private byte Score = 0;
 
 
     public GameFiled() {
@@ -61,33 +62,6 @@ public class GameFiled extends JPanel implements ActionListener {
         appleY = new Random().nextInt(20) * DotSize;
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) { // this methoc calls every 250 milsec
-        if (inGame) {
-            checkApple();
-            checkCollision();
-            move();
-        }
-        repaint(); //this method paint snake apple in move
-    }
-
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (inGame) {
-            g.drawImage(apple, appleX, appleY, this);
-            for (int i = 0; i < dots; i++) {
-                g.drawImage(dot, x[i], y[i], this);
-            }
-        } else {
-            String str = "Game Over";
-            Font f = new Font("Arial", Font.BOLD, 14);
-            g.setColor(Color.white);
-            g.setFont(f);
-            g.drawString(str, 125, Size / 2);
-        }
-    }
 
     private void move() {
         for (int i = dots; i > 0; i--) {
@@ -124,7 +98,7 @@ public class GameFiled extends JPanel implements ActionListener {
         if (y[0] > Size) {
             inGame = false;
         }
-        if (x[0] < 0) {
+        if (y[0] < 0) {
             inGame = false;
         }
     }
@@ -133,8 +107,42 @@ public class GameFiled extends JPanel implements ActionListener {
         if (x[0] == appleX && y[0] == appleY) { // check if snake eats apple;
             createApple();
             dots++;
+            Score++;
         }
     }
+
+
+
+    @Override
+    public void actionPerformed(ActionEvent e) { // this method calls every 250 milsec
+        if (inGame) {
+            checkApple();
+            checkCollision();
+            move();
+        }
+        repaint(); //this method paint snake apple in move
+    }
+
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (inGame) {
+            String TempForScore = String.valueOf(Score);
+            g.drawString(TempForScore,Size/2,Size/2);
+            g.drawImage(apple, appleX, appleY, this);
+            for (int i = 0; i < dots; i++) {
+                g.drawImage(dot, x[i], y[i], this);
+            }
+        } else {
+            String str = "Game Over";
+            Font f = new Font("Arial", Font.BOLD, 14);
+            g.setColor(Color.red);
+            g.setFont(f);
+            g.drawString(str, 115, Size / 2);
+        }
+    }
+
 
     class FieldKeyListener extends KeyAdapter {
         @Override

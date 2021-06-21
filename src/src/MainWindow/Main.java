@@ -8,6 +8,7 @@ public class Main extends JFrame {
 
 
     public Main() {
+        setDefaultLookAndFeelDecorated(true);
         setTitle("Snake");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setSize(350, 395);
