@@ -3,20 +3,25 @@ package MainWindow;
 import GameFields.GameFiled;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Main extends JFrame {
 
 
     public Main() {
-        setDefaultLookAndFeelDecorated(true);
-        setTitle("Snake");
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(350, 395);
-        setLocation(500, 240);
+        SetOptionWindow();
         add(new GameFiled());
         setVisible(true);
     }
 
+    public void SetOptionWindow() {
+
+        setTitle("Snake");
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setBounds(500, 240, 350, 395);
+        ImageIcon imageIcon = new ImageIcon("apple.png");
+        setIconImage(imageIcon.getImage());
+    }
 
     public static void main(String[] args) {
 

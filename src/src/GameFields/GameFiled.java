@@ -139,7 +139,7 @@ public class GameFiled extends JPanel implements ActionListener {
             Font f = new Font("Arial", Font.BOLD, 14);
             g.setColor(Color.red);
             g.setFont(f);
-            g.drawString(str, 115, Size / 2);
+            g.drawString(str, 120, Size / 2);
         }
     }
 
