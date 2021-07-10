@@ -1,2 +1,2 @@
 # SnakeGame
-Litlle  fun
+Little  fun
