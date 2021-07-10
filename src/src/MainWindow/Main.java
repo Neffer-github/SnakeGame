@@ -8,14 +8,14 @@ import java.awt.*;
 public class Main extends JFrame {
 
 
-    public Main() {
+    public Main( ) {
         SetOptionWindow();
         add(new GameFiled());
         setVisible(true);
     }
 
-    public void SetOptionWindow() {
 
+    public void SetOptionWindow() {
         setTitle("Snake");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(500, 240, 350, 370);

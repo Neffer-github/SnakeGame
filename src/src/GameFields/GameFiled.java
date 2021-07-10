@@ -38,6 +38,7 @@ public class GameFiled extends JPanel implements ActionListener {
     }
 
     public void initGame() {
+
         dots = 3; //set lenght of snake
         for (int i = 0; i < dots; i++) {
             x[i] = 48 - i * DotSize; //Init Possition of dot
@@ -103,10 +104,14 @@ public class GameFiled extends JPanel implements ActionListener {
     }
 
     private void checkApple() {
+        for (int i = 1; i < dots; i++) {
+            if (x[i] == appleX && y[i] == appleY);
+        }
         if (x[0] == appleX && y[0] == appleY) { // check if snake eats apple;
             createApple();
             dots++;
             Score++;
+
         }
     }
 
@@ -171,7 +176,7 @@ public class GameFiled extends JPanel implements ActionListener {
             }
 
             if (key == KeyEvent.VK_ESCAPE) {
-                Main StartGame = new Main();
+                //
             }
         }
     }
